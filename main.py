@@ -39,9 +39,27 @@ def add_product(product_id, name, category, price, quantity):
     save_data(data)
     print(f"เพิ่มสินค้า '{name}' เรียบร้อยแล้ว")
 
+def update_stock(product_id, new_quantity=None, new_price=None):
+    data = load_data()
+    found = False
+    for item in data:
+        if item["id"] == product_id:
+            found = True
+            if new_quantity is not None:
+                item["quantity"] = int(new_quantity)
+            if new_price is not None:
+                item["price"] = float(new_price)
+            break
+    
+    if found:
+        save_data(data)
+        print(f"อัปเดตข้อมูลสินค้า ID: {product_id} เรียบร้อยแล้ว")
+    else:
+        print(f"ข้อผิดพลาด: ไม่พบสินค้ารหัส {product_id} ในระบบ")
+
 def main():
     print("=== ยินดีต้อนรับสู่ระบบสต็อกร้านเขียนดี ===")
     list_products()
 
-if name == "main":
+if __name__ == "__main__":
     main()
