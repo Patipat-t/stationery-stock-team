@@ -57,6 +57,17 @@ def update_stock(product_id, new_quantity=None, new_price=None):
     else:
         print(f"ข้อผิดพลาด: ไม่พบสินค้ารหัส {product_id} ในระบบ")
 
+def delete_product(product_id):
+    data = load_data()
+    initial_length = len(data)
+    data = [item for item in data if item["id"] != product_id]
+    
+    if len(data) < initial_length:
+        save_data(data)
+        print(f"ลบสินค้า ID: {product_id} เรียบร้อยแล้ว")
+    else:
+        print(f"ข้อผิดพลาด: ไม่พบสินค้ารหัส {product_id} ที่ต้องการลบ")
+
 def main():
     print("=== ยินดีต้อนรับสู่ระบบสต็อกร้านเขียนดี ===")
     list_products()
