@@ -22,6 +22,23 @@ def list_products():
     for item in data:
         print(f"[{item['id']}] {item['name']} | หมวด: {item['category']} | ราคา: {item['price']} บาท | เหลือ: {item['quantity']} ชิ้น")
 
+def add_product(product_id, name, category, price, quantity):
+    data = load_data()
+    for item in data:
+        if item["id"] == product_id:
+            print(f"ข้อผิดพลาด: รหัสสินค้า {product_id} มีอยู่ในระบบแล้ว")
+            return
+    new_item = {
+        "id": product_id,
+        "name": name,
+        "category": category,
+        "price": float(price),
+        "quantity": int(quantity)
+    }
+    data.append(new_item)
+    save_data(data)
+    print(f"เพิ่มสินค้า '{name}' เรียบร้อยแล้ว")
+
 def main():
     print("=== ยินดีต้อนรับสู่ระบบสต็อกร้านเขียนดี ===")
     list_products()
