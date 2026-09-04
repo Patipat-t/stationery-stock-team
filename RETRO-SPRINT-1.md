@@ -31,3 +31,5 @@ PR #4 (US-04) เนื่องจาก AI เขียนกว้างเ�
 |---|---|
 | ออกแบบและเริ่มเขียนชุดทดสอบ (Unit Test) สำหรับระบบสต็อก | Patipat-t |
 | ตรวจสอบ Test Coverage ของทุกฟังก์ชัน | surawatch |
+<img width="1900" height="866" alt="สกรีนช็อต 2026-09-04 154435" src="https://github.com/user-attachments/assets/366dd0af-621b-4d1c-8e68-1a2961c16f81" />
+
