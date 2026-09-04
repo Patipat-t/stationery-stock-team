@@ -3,20 +3,20 @@
 ```mermaid
 classDiagram
     class Product {
-        +str sku
-        +str name
-        +str category
-        +int stock
-        +float price
-        +int threshold
+        +sku: str
+        +name: str
+        +category: str
+        +stock: int
+        +price: float
+        +threshold: int
         +is_low_stock() bool
     }
 
     class StockTransaction {
-        +str sku
-        +int amount
-        +str transaction_type
-        +int remaining_stock
+        +sku: str
+        +amount: int
+        +transaction_type: str
+        +remaining_stock: int
     }
 
     class StockObserver {
@@ -25,22 +25,22 @@ classDiagram
     }
 
     class EmailNotifier {
-        +str recipient_email
+        +recipient_email: str
         +update(product_name: str, remaining_stock: int, threshold: int) None
     }
 
     class SMSNotifier {
-        +str phone_number
+        +phone_number: str
         +update(product_name: str, remaining_stock: int, threshold: int) None
     }
 
     class NotifierFactory {
-        +create_notifier(channel: str, target: str)$ StockObserver
+        +create_notifier(channel: str, target: str) StockObserver
     }
 
     class InventoryService {
-        -dict _products
-        -list _observers
+        -_products: dict
+        -_observers: list
         +register_observer(observer: StockObserver) None
         +add_product(product: Product) None
         +receive_stock(sku: str, amount: int) int
